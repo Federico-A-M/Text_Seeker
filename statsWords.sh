@@ -10,8 +10,8 @@
 
 REGEX="[a-zA-Z]\w+$" #expresion regular que matchea solo con palabras y evita los numeros
 
-
-FILE=$( cat chapter37.txt | tr -d "[:punct:]" | tr -d "..." | tr " " "\n") #elimina los signos y demas (robado de un compañero)
+           #chapter37.txt  
+FILE=$( cat $1 | tr -d "[:punct:]" | tr -d "..." | tr " " "\n") #elimina los signos y demas (robado de un compañero)
 
 short="pppppppppppppppppp" #para que despues se intercambie con una mas corta
 long=""
