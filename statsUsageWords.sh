@@ -20,12 +20,7 @@ NONREPEAT=$( cat chapter37.txt | tr -d "[:punct:]" | tr -d "..." | tr " " "\n" |
 #NONREPEAT=$( cat chapter37.txt | tr -d "[:punct:]" | tr -d "..." | tr " " "\n" | tr '[:upper:]' '[:lower:]' | tr "á" "a" | tr "é" "e" | tr "í" "i" | tr "ó" "o" | tr "ú" "u" | tr "ñ" "n" | sort -u ) #repite letras 
 
 
-#grep -o -i $word $SORTFILE | wc -l
 
-BEFORE=0
-NOW=0
-ARRAY=()
-COUNTER=0
 
 for word in $NONREPEAT;
 do
@@ -33,20 +28,23 @@ do
 		continue;
 
 	elif [[ $word =~ $REGEX ]]; then	
-		echo ""
-		echo $word
-	
-		NOW=$( grep -o -i $word chapter37.txt | wc -l | tr '[:upper:]' '[:lower:]' )
-		echo $NOW
 		
-		[ $NOW -gt $BEFORE ] && BEFORE=$NOW  && ARRAY=("${ARRAY[$COUNTER]}" $word ) && COUNTER=$(( COUNTER + 1 )) ;
-	
+		echo $( grep -o -i $word chapter37.txt | wc -l | tr '[:upper:]' '[:lower:]' ) $word >> esto.txt
+		
 	fi
 done
 
-for i in "${ARRAY[*]}"
+RANKING=$( cat esto.txt | sort -n -r )
+
+CONT=20
+for i in $RANKING:
 do
     echo "$i"
+    CONT=$(( CONT - 1 ))
+    [ $CONT -eq 0 ] && break;
+
 done
 	
+rm esto.txt
+
 exit 0
