@@ -36,6 +36,11 @@ done
 
 RANKING=$( cat esto.txt | sort -n -r )
 
+echo "================================================"
+echo "::Top 10 most used words and their repetitions::"
+echo "================================================"
+
+
 CONT=20
 for i in $RANKING:
 do
@@ -46,5 +51,6 @@ do
 done
 	
 rm esto.txt
+
 
 exit 0
