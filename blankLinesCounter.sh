@@ -7,15 +7,15 @@
 #	Contador de líneas en blanco.
 #
 #######################################################################
-
-TOTAL=$( cat chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | wc -l )
+ 	    #chapter37.txt
+TOTAL=$( cat $1 | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | wc -l )
 
 LINE=0
 CONT=0
 
 for i in $(seq $TOTAL)
 do
-                LINE=$(cat chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" | wc -m )
+                LINE=$(cat $1 | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" | wc -m )
      
                 if [ $LINE -gt 1 ]; then
 			continue;
