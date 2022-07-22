@@ -8,77 +8,44 @@
 #	Author: Federico-A-M
 #
 ##################################################################################
+  
+#cat -b saltea lineas vacias
 
-                #$1  
-#FILE=$( cat chapter37.txt | tr -d "[:punct:]" | tr -d "..." | tr " " "\n") #elimina los signos y demas (robado de un compañero)
+#Por ejemplo, si el fichero se llama «datos.txt» y quieres leer la linea numero 3, ejecutarias:
+#awk 'NR==3' datos.txt
+		
+		#$1
+TOTAL=$( cat chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | wc -l )
 
-#awk '{ print length(), NR, $0 | "sort -rn" }' tmp.txt
+echo " "
+echo -n "Total of sentences: "
+echo $TOTAL
+echo " "
 
-#egrep -n "^.{$(wc -L <
-
-#FILESPLIT=$( egrep ^[\s\S]+$ chapter37.txt )
-
-#FILESPLIT=$(tr '\n' ' ' < chapter37.txt | sed -e 's/[.] \s*/. \n/g')
-
-SPLIT=$(cat chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g')
+SPLIT=()
+j=0
 
 
-for lines in $SPLIT
+for i in $(seq $TOTAL)
 do
-	echo $lines
+	SPLIT[$j]=$(cat chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i"  )
+	j=$(( $j + 1 ))
 done
 
+
+for elements in $(seq 0 $TOTAL)
+do
+	echo ${SPLIT[$elements]}
+done
 
 
 SHORTLINES=0
 LONGLINES=0
 
 
-
-TOTAL=$( cat chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | wc -l )
-
-echo " "
-echo -n "Total of sentences: "
-echo $TOTAL
-
-
-
-
-
-
-
-
-#for word in $FILE;
-
-
-
 #chars=$(tr -dc '[:alnum:]' < $1 | wc -c)
 #words=$(cat $1 | wc -c)
 #printf "%.2f" $(echo "$chars/$words" | bc -l)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 exit 0
