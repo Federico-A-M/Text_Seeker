@@ -17,8 +17,10 @@
 TOTAL=$( cat chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | wc -l )
 
 echo " "
+echo "========================================================="
 echo -n "Total of sentences: "
 echo $TOTAL
+echo "========================================================="
 echo " "
 
 SPLIT=()
@@ -63,34 +65,52 @@ do
 done
 
 
-
-
+echo "========================================================="
 echo " "
-echo "la suma total de longitudes: $SUMA"
+echo "::List of analyzed sentences::  "
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+echo " "
+for element in $(seq 0 $TOTAL)
+do
+       echo ${SPLIT[$element]}
+done
+echo " "
+echo "========================================================="
+echo " "
+echo " "
+echo " "
+
+
+echo "========================================================="
+echo "the sum total of lengths: $SUMA"
 echo " " 
 #echo $( cat chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | wc -m ) #identico a hacer a la sumatoria anterior
+echo "========================================================="
 echo " "
-echo "la linea mas larga es de: $LONGL"
+echo " "
+echo "========================================================="
+echo "the longest line length is: $LONGL"
 echo " "
 echo "${LL[0]}"
+echo "========================================================="
 echo " "
-echo "la linea mas corta fue: $SHORTL"
+echo " "
+echo "========================================================="
+echo "the shortest line length is: $SHORTL"
 echo " "
 echo "${LS[0]}"
-echo " " 
+echo "========================================================="
+echo " "
+echo " "
+echo "========================================================="
+echo "The average length is: $(( $SUMA / $TOTAL )) "
+echo "========================================================="
 
 
-
-#for element in $(seq 0 $TOTAL)
-#do
-#	echo ${SPLIT[$element]}
-#done
-	
 	
 	
 	
 	
 	
 exit 0
-
 
