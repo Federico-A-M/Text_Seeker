@@ -13,7 +13,7 @@
 REGEX="[A-Z]\w+$" #expresion regular que matchea solo con palabras y evita los numeros
 
            #chapter37.txt
-FILE=$( cat chapter37.txt | tr -d "[:punct:]" | tr -d "..." | tr " " "\n")
+FILE=$( cat $1 | tr -d "[:punct:]" | tr -d "..." | tr " " "\n")
 
 PROPERNOUNS=()
 i=0
