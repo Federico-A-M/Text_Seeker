@@ -13,8 +13,8 @@
 
 #awk 'NR==3' datos.txt
 		
-		#$1
-TOTAL=$( cat chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | wc -l )
+	     #chapter37.txt
+TOTAL=$( cat $1 | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | wc -l )
 
 echo " "
 echo "========================================================="
@@ -38,20 +38,20 @@ for i in $(seq $TOTAL)
 do
 	if [ $i -eq 1 ]; then
 
-		SPLIT[$j]=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i"  )
+		SPLIT[$j]=$(cat -b $1 | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i"  )
 		j=$(( $j + 1 ))
-		SHORTL=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" | wc -m )
-		LONGL=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" | wc -m )
+		SHORTL=$(cat -b $1 | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" | wc -m )
+		LONGL=$(cat -b $1 | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" | wc -m )
 
-                NUMERO=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" | wc -m )
+                NUMERO=$(cat -b $1 | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" | wc -m )
                 SUMA=$(( $SUMA + $NUMERO ))
 
 
 	else
-		SPLIT[$j]=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i"  )
+		SPLIT[$j]=$(cat -b $1 | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i"  )
                 j=$(( $j + 1 ))
 
-		NUMERO=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" | wc -m )
+		NUMERO=$(cat -b $1 | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" | wc -m )
 		SUMA=$(( $SUMA + $NUMERO ))
 
 
