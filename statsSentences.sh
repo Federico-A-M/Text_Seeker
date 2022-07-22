@@ -11,7 +11,6 @@
   
 #cat -b saltea lineas vacias
 
-#Por ejemplo, si el fichero se llama «datos.txt» y quieres leer la linea numero 3, ejecutarias:
 #awk 'NR==3' datos.txt
 		
 		#$1
@@ -25,29 +24,73 @@ echo " "
 SPLIT=()
 j=0
 
+SUMA=0
+NUMERO=0
+
+SHORTL=0
+LS=()
+LONGL=0
+LL=()
 
 for i in $(seq $TOTAL)
 do
-	SPLIT[$j]=$(cat chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i"  )
-	j=$(( $j + 1 ))
+	if [ $i -eq 1 ]; then
+
+		SPLIT[$j]=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i"  )
+		j=$(( $j + 1 ))
+		SHORTL=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" | wc -m )
+		LONGL=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" | wc -m )
+
+                NUMERO=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" | wc -m )
+                SUMA=$(( $SUMA + $NUMERO ))
+
+
+	else
+		SPLIT[$j]=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i"  )
+                j=$(( $j + 1 ))
+
+		NUMERO=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" | wc -m )
+		SUMA=$(( $SUMA + $NUMERO ))
+
+
+		[ $NUMERO -lt 2 ] && continue;
+		[ $NUMERO -gt $LONGL ] && LONGL=$NUMERO && LL[0]=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" );
+		[ $NUMERO -lt $SHORTL ] && SHORTL=$NUMERO && LS[0]=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" );
+
+	fi
+
+
 done
 
 
-for elements in $(seq 0 $TOTAL)
-do
-	echo ${SPLIT[$elements]}
-done
 
 
-SHORTLINES=0
-LONGLINES=0
+echo " "
+echo "la suma total de longitudes: $SUMA"
+echo " " 
+#echo $( cat chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | wc -m ) #identico a hacer a la sumatoria anterior
+echo " "
+echo "la linea mas larga es de: $LONGL"
+echo " "
+echo "${LL[0]}"
+echo " "
+echo "la linea mas corta fue: $SHORTL"
+echo " "
+echo "${LS[0]}"
+echo " " 
 
 
-#chars=$(tr -dc '[:alnum:]' < $1 | wc -c)
-#words=$(cat $1 | wc -c)
-#printf "%.2f" $(echo "$chars/$words" | bc -l)
 
-
+#for element in $(seq 0 $TOTAL)
+#do
+#	echo ${SPLIT[$element]}
+#done
+	
+	
+	
+	
+	
+	
 exit 0
 
 
