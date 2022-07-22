@@ -10,16 +10,16 @@
 
 REGEX="[a-zA-Z]\w+$" #expresion regular que matchea solo con palabras y evita los numeros
 
-           	#$1  
-FILE=$( cat chapter37.txt | tr -d "[:punct:]" | tr -d "..." | tr " " "\n") #elimina los signos y demas.
+           #$chapter37.txt  
+FILE=$( cat $1 | tr -d "[:punct:]" | tr -d "..." | tr " " "\n") #elimina los signos y demas.
 
 short="pppppppppppppppppp" #para que despues se intercambie con una mas corta
 long=""
 
 
 
-TOTAL=$( cat chapter37.txt | tr -d "[:punct:]" | tr -d "..." | tr " " "\n" | wc -w )  
-SUMA=$( cat chapter37.txt | tr -d "[:punct:]" | tr -d "..." | tr " " "\n" | wc -m )
+TOTAL=$( cat $1 | tr -d "[:punct:]" | tr -d "..." | tr " " "\n" | wc -w )  
+SUMA=$( cat $1 | tr -d "[:punct:]" | tr -d "..." | tr " " "\n" | wc -m )
 
 for word in $FILE;
 do
