@@ -27,17 +27,24 @@ do
          
 done
 
-
+echo " "
+echo "================================================"
 echo "Total of proper nouns: "
 echo ${#PROPERNOUNS[@]}
+echo "================================================"
 echo ""
+echo ""
+echo "================================================"
 echo "Listing :"
-
+echo "~~~~~~~~~~"
+echo ""
 for j in ${PROPERNOUNS[@]}
 do
 	echo -n "$j /  "
 done	
-
+echo " "
+echo "================================================"
+echo " "
 
 
 
