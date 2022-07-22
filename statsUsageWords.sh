@@ -13,9 +13,9 @@
 REGEX="[a-zA-Z]\w+$" #expresion regular que matchea solo con palabras y evita los numeros
 
                 #chapter37.txt
-SORTFILE=$( cat chapter37.txt | tr -d "[:punct:]" | tr -d "..." | tr " " "\n" | tr '[:upper:]' '[:lower:]' | tr "á" "a" | tr "é" "e" |tr "í" "i" | tr "ó" "o" | tr "ú" "u" | tr "ñ" "n" | sort ) #Funciona
+SORTFILE=$( cat $1 | tr -d "[:punct:]" | tr -d "..." | tr " " "\n" | tr '[:upper:]' '[:lower:]' | tr "á" "a" | tr "é" "e" |tr "í" "i" | tr "ó" "o" | tr "ú" "u" | tr "ñ" "n" | sort ) #Funciona
 
-NONREPEAT=$( cat chapter37.txt | tr -d "[:punct:]" | tr -d "..." | tr " " "\n" | tr '[:upper:]' '[:lower:]' | sort -u ) #repite letras
+NONREPEAT=$( cat $1 | tr -d "[:punct:]" | tr -d "..." | tr " " "\n" | tr '[:upper:]' '[:lower:]' | sort -u ) #repite letras
 
 #NONREPEAT=$( cat chapter37.txt | tr -d "[:punct:]" | tr -d "..." | tr " " "\n" | tr '[:upper:]' '[:lower:]' | tr "á" "a" | tr "é" "e" | tr "í" "i" | tr "ó" "o" | tr "ú" "u" | tr "ñ" "n" | sort -u ) #repite letras 
 
@@ -29,7 +29,7 @@ do
 
 	elif [[ $word =~ $REGEX ]]; then	
 		
-		echo $( grep -o -i $word chapter37.txt | wc -l | tr '[:upper:]' '[:lower:]' ) $word >> esto.txt
+		echo $( grep -o -i $word $1 | wc -l | tr '[:upper:]' '[:lower:]' ) $word >> esto.txt
 		
 	fi
 done
