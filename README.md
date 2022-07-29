@@ -54,9 +54,13 @@ _Con esto abremos logrado persistir los datos mapeando el archivo dentro contene
 _El menu consta de 5 opciones para analisis de texto_
 
 > **1. statsWords.sh** Indicador estadístico de longitud de palabras. 
+
 > **2. statsUsageWords.sh** Indicador estadístico de uso de palabras.
-> **3. findNames.sh** Identificación de nombres propios
+
+> **3. findNames.sh** Identificación de nombres propios.
+
 > **4. statsSentences.sh** Indicador estadístico de longitud de oraciones.
+
 > **5. blankLinesCounter.sh** Contador de líneas en blanco.
 
 ## Autor ✒️
