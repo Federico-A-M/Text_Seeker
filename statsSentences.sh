@@ -13,7 +13,6 @@
 
 #awk 'NR==3' datos.txt
 		
-	     #chapter37.txt
 TOTAL=$( cat $1 | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | wc -l )
 
 echo " "
@@ -56,8 +55,8 @@ do
 
 
 		[ $NUMERO -lt 2 ] && continue;
-		[ $NUMERO -gt $LONGL ] && LONGL=$NUMERO && LL[0]=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" );
-		[ $NUMERO -lt $SHORTL ] && SHORTL=$NUMERO && LS[0]=$(cat -b chapter37.txt | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" );
+		[ $NUMERO -gt $LONGL ] && LONGL=$NUMERO && LL[0]=$(cat -b $1 | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" );
+		[ $NUMERO -lt $SHORTL ] && SHORTL=$NUMERO && LS[0]=$(cat -b $1 | sed 's/\([.!?]\) \([[:upper:]]\)/\1\n\2/g' | awk "NR==$i" );
 
 	fi
 
