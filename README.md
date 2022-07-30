@@ -55,7 +55,7 @@ _Construida la imagen ya estariamos en condiciones de ejecutar un contenedor_
 
 _Dentro del repositorio agregue un archivo txt con un fragmento de texto de mi novela favorita, pero se evaluar el texto que tu desees_
 
-_En el comando que sigue usaremos el archivo "chapter37.txt" a modo de ejemplo_
+_En el comando que sigue usaremos el archivo "chapter37.txt" a modo de ejemplo (cambie el ruteo "/home/user/Text_Seeker" por el suyo en donde se encuentre el repositorio clonado) _
 
 ```
 docker run -it -v /home/user/Text_Seeker:/var/data runseeker /var/data/chapter37.txt 
