@@ -15,6 +15,19 @@ _Si eres usuario de Ubuntu puedes instalar Docker desde la terminal en la siguie
 ```
 https://docs.docker.com/engine/install/ubuntu/
 ```
+_Checkear que se haya instalado correctamente _
+
+```
+$ docker version
+```
+_Se aconseja por comodidad dar permisos de grupo introduciendo el siguiente comando_
+
+```
+$ sudo usermod -aG docker $USER
+```
+
+_Reiniciar la session antes de continuar_
+
 
 _2- clonar o descargar zip de este repositorio al local_
 
@@ -45,7 +58,7 @@ _Dentro del repositorio agregue un archivo txt con un fragmento de texto de mi n
 _En el comando que sigue usaremos el archivo "chapter37.txt" a modo de ejemplo_
 
 ```
-docker run -it -v /home/sabcat/Text_Seeker:/var/data runseeker /var/data/chapter37.txt 
+docker run -it -v /home/user/Text_Seeker:/var/data runseeker /var/data/chapter37.txt 
 ```
 _Con esto abremos logrado persistir los datos mapeando el archivo dentro contenedor _
 
